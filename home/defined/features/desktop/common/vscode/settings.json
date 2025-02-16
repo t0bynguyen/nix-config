@@ -3,11 +3,10 @@
     "workbench.colorTheme": "Catppuccin Mocha",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.sideBar.location": "right",
-
     "catppuccin.accentColor": "blue",
 
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 4,
+    "editor.tabSize": 2,
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontLigatures": true,
     "editor.fontSize": 15,
@@ -15,25 +14,17 @@
     "editor.quickSuggestions": {
         "strings": "on"
     },
-
     "window.titleBarStyle": "custom",
-
     "prettier.tabWidth": 4,
     "prettier.useTabs": false,
     "prettier.endOfLine": "lf",
-
     "explorer.confirmDelete": false,
-
     "typescript.updateImportsOnFileMove.enabled": "always",
-
     "supermaven.enableFixWithSupermaven": true,
-
     "[lua]": {
         "editor.defaultFormatter": "sumneko.lua"
     },
-
     "git.openRepositoryInParentFolders": "never",
-
     "files.associations": {
         "*.css": "tailwindcss"
     },
@@ -41,7 +32,6 @@
     "explorer.confirmDragAndDrop": false,
     "liveServer.settings.donotShowInfoMsg": true,
     "projectManager.sortList": "Recent",
-
     "nix.enableLanguageServer": true,
     "nix.serverPath": "nixd",
     "nix.serverSettings": {
@@ -64,10 +54,8 @@
     "[c]": {
         "editor.defaultFormatter": "ms-vscode.cpptools"
     },
-
     "terminal.integrated.shellIntegration.enabled": true,
     "terminal.integrated.gpuAcceleration": "off",
-
     "editor.formatOnSave": true,
     "zig.zls.enabled": "on"
 }
