@@ -1,4 +1,10 @@
-{ pkgs, unstable-pkgs, ... }:
+{
+  pkgs,
+  unstable-pkgs,
+  system,
+  inputs,
+  ...
+}:
 {
   imports = [
     ./zsh
@@ -28,12 +34,14 @@
       spotify-player # Spotify player
       feh # Image viewer
 
-      nixfmt-rfc-style # Nix formatter
       nixd # Nix LSP
       nix-init
     ]
     ++ (with unstable-pkgs; [
       bun
       deno
-    ]);
+    ])
+    ++ [
+      inputs.alejandra.defaultPackage.${system} # Nix formatter
+    ];
 }
