@@ -4,8 +4,7 @@
   system,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     ./zsh
     ./neovim
@@ -17,8 +16,7 @@
     ./direnv.nix
   ];
 
-  home.packages =
-    with pkgs;
+  home.packages = with pkgs;
     [
       bottom # System viewer
       eza # Better ls
@@ -33,6 +31,7 @@
       ffmpeg # Media converter
       spotify-player # Spotify player
       feh # Image viewer
+      impala # Wifi manager
 
       nixd # Nix LSP
       nix-init
