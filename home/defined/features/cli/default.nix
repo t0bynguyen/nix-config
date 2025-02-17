@@ -31,6 +31,8 @@
       spotify-player # Spotify player
       feh # Image viewer
       impala # Wifi manager
+      gparted # Partition manager
+      btrfs-progs # Btrfs tools
 
       # Media converter
       ((ffmpeg-full.override {withUnfree = true;}).overrideAttrs (_: {doCheck = false;}))
@@ -41,9 +43,6 @@
     ++ (with unstable-pkgs; [
       bun
       deno
-
-      gparted # Partition manager
-      btrfs-progs # Btrfs tools
     ])
     ++ [
       inputs.alejandra.defaultPackage.${system} # Nix formatter
