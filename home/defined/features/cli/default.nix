@@ -41,6 +41,9 @@
     ++ (with unstable-pkgs; [
       bun
       deno
+
+      gparted # Partition manager
+      btrfs-progs # Btrfs tools
     ])
     ++ [
       inputs.alejandra.defaultPackage.${system} # Nix formatter

@@ -3,8 +3,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   boot = {
     initrd = {
       availableKernelModules = [
@@ -15,12 +14,12 @@
         "usb_storage"
         "sd_mod"
       ];
-      kernelModules = [ ];
+      kernelModules = [];
     };
 
     kernelPackages = pkgs.linuxPackages_6_12;
-    kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
+    kernelModules = ["kvm-amd"];
+    extraModulePackages = [];
 
     loader = {
       systemd-boot = {
@@ -43,6 +42,11 @@
       "fmask=0077"
       "dmask=0077"
     ];
+  };
+
+  fileSystems."/mnt/secondary" = {
+    device = "/dev/disk/by-uuid/1436e7d0-a6d6-418f-b90c-b31f41af0a7b";
+    fsType = "btrfs";
   };
 
   swapDevices = [
