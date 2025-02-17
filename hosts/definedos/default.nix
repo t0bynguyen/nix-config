@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -16,6 +15,7 @@
     ../common/optional/quietboot.nix
     ../common/optional/ssd.nix
     ../common/optional/gamemode.nix
+    ../common/optional/fwupd.nix
   ];
 
   networking.hostName = "definedos";

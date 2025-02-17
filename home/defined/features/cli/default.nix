@@ -28,10 +28,12 @@
       nitch # System fetch
       cava # Audio visualizer
       just # Command runner
-      ffmpeg # Media converter
       spotify-player # Spotify player
       feh # Image viewer
       impala # Wifi manager
+
+      # Media converter
+      ((ffmpeg-full.override {withUnfree = true;}).overrideAttrs (_: {doCheck = false;}))
 
       nixd # Nix LSP
       nix-init
