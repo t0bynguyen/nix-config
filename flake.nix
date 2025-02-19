@@ -1,5 +1,5 @@
 {
-  description = "defined's NixOS configuration";
+  description = "Toby's NixOS configuration";
 
   inputs = {
     # Nix ecosystem
@@ -26,62 +26,64 @@
     alejandra.url = "github:kamadorueda/alejandra/3.1.0";
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: {
-    nixosConfigurations = {
-      definedos = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs system;
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations = {
+        deuterium = nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs system;
 
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
+            pkgs = import nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            };
+
+            unstable-pkgs = import inputs.nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
           };
 
-          unstable-pkgs = import inputs.nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        };
+          modules = [
+            inputs.stylix.nixosModules.stylix
 
-        modules = [
-          inputs.stylix.nixosModules.stylix
+            ./hosts/deuterium
 
-          ./hosts/definedos
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "hm-backup";
+                extraSpecialArgs = {
+                  inherit inputs system;
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "hm-backup";
-              extraSpecialArgs = {
-                inherit inputs system;
+                  pkgs = import nixpkgs {
+                    inherit system;
+                    config.allowUnfree = true;
+                  };
 
-                pkgs = import nixpkgs {
-                  inherit system;
-                  config.allowUnfree = true;
-                };
-
-                unstable-pkgs = import inputs.nixpkgs-unstable {
-                  inherit system;
-                  config.allowUnfree = true;
+                  unstable-pkgs = import inputs.nixpkgs-unstable {
+                    inherit system;
+                    config.allowUnfree = true;
+                  };
                 };
               };
-            };
 
-            home-manager.users.defined = {
-              imports = [
-                ./home/defined/definedos.nix
-              ];
-            };
-          }
-        ];
+              home-manager.users.toby = {
+                imports = [
+                  ./home/toby/deuterium.nix
+                ];
+              };
+            }
+          ];
+        };
       };
     };
-  };
 }

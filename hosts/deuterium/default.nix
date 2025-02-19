@@ -1,10 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./hardware-configuration.nix
 
     ./stylix
 
-    ../common/users/defined
+    ../common/users/toby
     ../common/global
 
     ../common/optional/nvidia.nix
@@ -18,7 +19,7 @@
     ../common/optional/fwupd.nix
   ];
 
-  networking.hostName = "definedos";
+  networking.hostName = "deuterium";
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -26,7 +27,7 @@
   ];
 
   programs.zsh.enable = true;
-  users.users.defined.shell = pkgs.zsh;
+  users.users.toby.shell = pkgs.zsh;
 
   system.stateVersion = "24.11";
 }
